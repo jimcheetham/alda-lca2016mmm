@@ -4,49 +4,53 @@
 (key-signature! [:f :sharp :major])
 
 midi-electric-bass-finger:
-# Top line of score, named "Electric Bass"
-%intro
-# 8 bars for the intro
-[o2 d8 d16 d8 d16 *3 | d8 *3 c]*3
-o2 d8 d16 d8 d16 *3 | d32 e- e+ f-  g- a- a+ b  b- a- g+ g-  f+ f- e- d
-[o2 d8 d16 d8 d16 *3 | d8 *3 c]*4
-# At the end of 8 bars we're out of the intro, into verse1
-%verse1
-[ o2 f8/>c1 f16 f8 f16 *3  f8 *4 ]*3
-o2 [f8./a8.]*4 f8/a8
+  # Top line of score, named "Electric Bass"
+  %intro
+  # 8 bars for the intro
+  [o2 d8 d16 d8 d16 *3 | d8 *3 c]*3
+   o2 d8 d16 d8 d16 *3 | d32 e- e+ f-  g- a- a+ b  b- a- g+ g-  f+ f- e- d
+  [o2 d8 d16 d8 d16 *3 | d8 *3 c]*4
+
+  # At the end of 8 bars we're out of the intro, into verse1
+  %verse1
+  [ o2 f8/>c1 f16 f8 f16 *3  f8 *4 ]*3
+  o2 [f8./a8.]*4 f8/a8
 
 midi-acoustic-bass:
-# Bottom line of score, named "Electric Guitar"
-@intro
-[ r1 ]*4
-[ o4 d8/c8 d16/c16 d8/c8 d8./c8. a8./e-8. a-8./e8. g8/d8 ]*4
-@verse1
-[ f1/c1 ]*3 | f8./c f8./c f8./c~f8./c~f8./c r16
+  # Bottom line of score, named "Electric Guitar"
+  @intro
+  [ r1 ]*4
+  [ o4 d8/c8 d16/c16 d8/c8 d8./c8. a8./e-8. a-8./e8. g8/d8 ]*4
+
+  @verse1
+  [ f1/c1 ]*3 | f8./c f8./c f8./c~f8./c~f8./c r16
 
 midi-brass-section:
-# "Voice". Sorry Lemmy.
-@verse1
-#  If you like to  gamble  I  | tell you I'm your man ,  you      |
-o5 f8 f   f    f   f8. f8. d8 | f8   d16 f8. d8   f4  r8 d8       |
-#  win some lose some it's    | all the same to  me.              |
-o5 f4  f    f    f8 ~ d8      | f8. d8. f8.  d8. f8 g-32~g+32 r16 |
+  # "Voice". Sorry Lemmy.
+  @verse1
+  #  If you like to  gamble  I  | tell you I'm your man ,  you      |
+  o5 f8 f   f    f   f8. f8. d8 | f8   d16 f8. d8   f4  r8 d8       |
+  #  win some lose some it's    | all the same to  me.              |
+  o5 f4  f    f    f8 ~ d8      | f8. d8. f8.  d8. f8 g-32~g+32 r16 |
 
 # Percussion instruments.
 midi-synth-drum:
-# This is the upper set of percussives, including x's
-@intro
-[ r1 ]*2
-[ c16 *16 ]*2
-[ e8/a c/g e c/g  e c/g e c/g ]*3
-  e8/a c/g e c/g c/e/a g16 c/a  e c c c/g
-@verse1
-[ e8/a c/g e c/g  e c/g e c/g ]*3
-  e8/a c/g e c/g c/e/a g16 c/a  e c c c/g
+  # This is the upper set of percussives, including x's
+  @intro
+  [ r1 ]*2
+  [ c16 *16 ]*2
+  [ e8/a c/g e c/g  e c/g e c/g ]*3
+    e8/a c/g e c/g  c/e/a g16 c/a e c c c/g
+
+  @verse1
+  [ e8/a c/g e c/g  e c/g e c/g ]*3
+    e8/a c/g e c/g  c/e/a g16 c/a e c c c/g
 
 midi-woodblock:
-# This is the lower line percussive
-@intro
-[ r1 ]*4
-[f4 *4 ]*4
-@verse1
-[f4 *4 ]*4
+  # This is the lower line percussive
+  @intro
+  [ r1 ]*4
+  [f4 *4 ]*4
+
+  @verse1
+  [f4 *4 ]*4
