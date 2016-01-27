@@ -8,7 +8,7 @@ midi-electric-bass-finger:
   %intro
   # 8 bars for the intro
   [o2 d8 d16 d8 d16 *3 | d8 *3 c]*3
-  o2 d8 d16 d8 d16 *3 | d32 e- e+ f-  g- a- a+ b  b- a- g+ g-  f+ f- e- d
+   o2 d8 d16 d8 d16 *3 | d32 e- e+ f-  g- a- a+ b  b- a- g+ g-  f+ f- e- d
   [o2 d8 d16 d8 d16 *3 | d8 *3 c]*4
 
   # At the end of 8 bars we're out of the intro, into verse1
@@ -40,11 +40,11 @@ midi-synth-drum:
   [ r1 ]*2
   [ c16 *16 ]*2
   [ e8/a c/g e c/g  e c/g e c/g ]*3
-    e8/a c/g e c/g c/e/a g16 c/a  e c c c/g
+    e8/a c/g e c/g  c/e/a g16 c/a e c c c/g
 
   @verse1
   [ e8/a c/g e c/g  e c/g e c/g ]*3
-    e8/a c/g e c/g c/e/a g16 c/a  e c c c/g
+    e8/a c/g e c/g  c/e/a g16 c/a e c c c/g
 
 midi-woodblock:
   # This is the lower line percussive

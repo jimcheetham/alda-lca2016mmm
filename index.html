@@ -140,7 +140,17 @@
 				</section>
 				<section>
 					<h2>Alda language features</h2>
-					<p>BUT chords can have notes of unequal length!</p>
+					<p>Whitespace and the measure mark | are not significant, so you can choose to visually align if you like</p>
+<pre><code class="hljs" contenteditable>piano:
+  V1: o5 c4 &lt; b a g |   e1
+  V2: o4 c1/e/g     | &lt; g+/b
+</code></pre>
+					<img src="demos/multivoice.png"/>
+					<audio controls><source src="demos/multivoice.ogg" type="audio/ogg" /></audio><br/>
+				</section>
+				<section>
+					<h2>Alda language features</h2>
+					<p>Chords can have notes of unequal length!</p>
 <pre><code class="hljs" contenteditable>piano:
   o4 c1/e/g/>c4 &lt; b a g | &lt; g+1/b/>e
 </code></pre>
@@ -152,8 +162,8 @@
 					<h2>Alda language features</h2>
 					<p>You can place markers in the score, and then align voices to them - rather than adding multiple rests from the start</p>
 <pre><code class="hljs" contenteditable>piano:
-  V1: o5 c4 < b a g | %lastnote e1
-  V2: o4 c1/e/g | &lt; g+/b
+  V1: o5 c4 < b a g | %lastnote  e1
+  V2: o4 c1/e/g     |          &lt; g+/b
 
 trumpet: 
   o4 @lastnote c4 c &lt; g2
@@ -472,13 +482,13 @@ midi-electric-bass-finger:
   %intro
   # 8 bars for the intro
   [o2 d8 d16 d8 d16 *3 | d8 *3 c]*3
-  o2 d8 d16 d8 d16 *3 | d32 e- e+ f-  g- a- a+ b  b- a- g+ g-  f+ f- e- d
+   o2 d8 d16 d8 d16 *3 | d32 e- e+ f-  g- a- a+ b  b- a- g+ g-  f+ f- e- d
   [o2 d8 d16 d8 d16 *3 | d8 *3 c]*4
 
   # At the end of 8 bars we're out of the intro, into verse1
   %verse1
   [ o2 f8/>c1 f16 f8 f16 *3  f8 *4 ]*3
-  o2 [f8./a8.]*4 f8/a8
+    o2 [f8./a8.]*4 f8/a8
 
 midi-acoustic-bass:
   # Bottom line of score, named "Electric Guitar"
@@ -504,11 +514,11 @@ midi-synth-drum:
   [ r1 ]*2
   [ c16 *16 ]*2
   [ e8/a c/g e c/g  e c/g e c/g ]*3
-    e8/a c/g e c/g c/e/a g16 c/a  e c c c/g
+    e8/a c/g e c/g  c/e/a g16 c/a e c c c/g
 
   @verse1
   [ e8/a c/g e c/g  e c/g e c/g ]*3
-    e8/a c/g e c/g c/e/a g16 c/a  e c c c/g
+    e8/a c/g e c/g  c/e/a g16 c/a e c c c/g
 
 midi-woodblock:
   # This is the lower line percussive
@@ -531,11 +541,11 @@ midi-woodblock:
 				<section>
 					<h2>Resources</h2>
 					<ul>
-						<li>https://github.com/alda-lang/alda</li>
-						<li>http://daveyarwood.github.io/alda/2015/09/05/alda-a-manifesto-and-gentle-introduction/</li>
-						<li>http://daveyarwood.github.io/alda/2015/11/28/alda-has-a-bunch-of-new-features/</li>
-						<li>https://clojurians.slack.com/messages/alda/</li>
-						<li>February 11 2016, Clojure Remote. http://clojureremote.com/speakers/#yarwood</li>
+						<li><a href="https://github.com/alda-lang/alda">https://github.com/alda-lang/alda</li>
+						<li><a href="http://daveyarwood.github.io/alda/2015/09/05/alda-a-manifesto-and-gentle-introduction/">http://daveyarwood.github.io/alda/2015/09/05/alda-a-manifesto-and-gentle-introduction/</li>
+						<li><a href="http://daveyarwood.github.io/alda/2015/11/28/alda-has-a-bunch-of-new-features/">http://daveyarwood.github.io/alda/2015/11/28/alda-has-a-bunch-of-new-features/</li>
+						<li><a href="https://clojurians.slack.com/messages/alda/">https://clojurians.slack.com/messages/alda/</li>
+						<li>February 11 2016, Clojure Remote. <a href="http://clojureremote.com/speakers/#yarwood">http://clojureremote.com/speakers/#yarwood</li>
 				</section>
 
 			</div>
