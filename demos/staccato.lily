@@ -1,0 +1,6 @@
+\relative c {
+\clef bass
+d8 e fis g a2
+d,8 e fis\staccato g\staccato a2
+d,8\< e\! fis\staccato\< g\staccato\! a2\f
+}

@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>LCA2016 MMM : Alda</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+	</style>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+				<section>
+					<h1>Alda</h1>
+					<h2>A music programming language for musicians</h2>
+					<p>LCA2016 Multimedia &amp; Music Miniconf</p>
+					<p>Jim Cheetham</p>
+				</section>
+				<section>
+					<h1>Apology</h1>
+					<p>I haven't been involved in making music (computer or physical) for over 35 years, so while I'm familiar with notation and coding I'm nothing more than an interested observer these days ...</p>
+					<p>What's MIDI? :-)</p>
+					<h2>NO RICKROLLING</h2>
+				</section>
+				</section>
+
+				<section>
+				<section>
+					<h2>Alda is ...</h2>
+					<ul>
+					<li>A textual language to describe music</li>
+					<li>A parser to create &amp; play MIDI scores</li>
+					<li>An interactive session to write in</li>
+					<li>Young (Sep 2015) and under development</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Alda is ...</h2>
+					<blockquote>Inspired by other music/audio programming languages such as PPMCK, LilyPond and ChucK, Alda aims to be a powerful and flexible programming language for the musician who wants to easily compose and generate music on the fly, using only a text editor.</blockquote>
+				</section>
+				</section>
+
+				<section>
+				<section>
+					<h2>Alda code</h2>
+					<p>It looks similar to Lilypond</p>
+<pre><code class="hljs" contenteditable>midi-electric-bass-finger:
+(tempo 150)
+o3
+g8/d r b-/f r >c4./&lt;g g8/d  | r b-/f r >d-/&lt;a- >c2/&lt;g |
+g8/d r b-/f r >c4./&lt;g b-8/f | r g2../d
+</code></pre>
+					<p><img src="demos/smoke2.png"/><br/>
+					<audio controls><source src="demos/smoke2.ogg" type="audio/ogg" /></audio><br/>
+					<small>Riff from Smoke on the Water, Deep Purple, 1972</small></p>
+				</section>
+				<section>
+					<h2>Alda code</h2>
+					<p>Lilypond markup:</p>
+<pre><code class="hljs" contenteditable>\relative c'' {
+\clef treble
+
+&lt;g d>8 r &lt;bes f> r &lt;c g>4. &lt;g d>8
+r &lt;bes f> r &lt;des aes> &lt;c g>2
+&lt;g d>8 r &lt;bes f> r &lt;c g>4. &lt;bes f>8
+r &lt;g d>2..
+}</code></pre>
+					<p><img src="demos/smoke2.png"/><br/>
+					<audio controls><source src="demos/smoke2.ogg" type="audio/ogg" /></audio><br/>
+					<small>Riff from Smoke on the Water, Deep Purple, 1972</small></p>
+
+				</section>
+				<section>
+					<h2>Alda vs Lilypond</h2>
+					<p>Quick differences in this example:</p>
+					<ul>
+					<li>Chords are <code>g/d</code> not <code>&lt;g d></code></li>
+					<li>The octave changes are in SPN and are explicit</li>
+					<li>Pitch accidentals are <code>- +</code> not <code>isis eses</code></li>
+					<ul>
+				</section>
+				</section>
+
+				<section>
+				<section>
+					<h2>Alda language features</h2>
+					<p>Settings persist until reset :</p>
+					<ul>
+					<li>Note length: <code>c4 c c8 c c c c4 c c2</code><br/>
+						<img src="demos/notelength.png"/>
+						<audio controls><source src="demos/notelength.ogg" type="audio/ogg" /></audio><br/>
+</li>
+					<li>Octave: <code>o4 c4 > c c &lt; c c &lt; &lt; c2.</code><br/>
+						<img src="demos/persistoctave.png"/>
+						<audio controls><source src="demos/persistoctave.ogg" type="audio/ogg" /></audio><br/>
+</li>
+				</section>
+				<section>
+					<h2>Alda language features</h2>
+					<p>Multiple voices are synchronised</p>
+<pre><code class="hljs" contenteditable>
+piano:
+V1: o5 c4 &lt; b a g | e1
+V2: o4 c1/e/g | &lt; g+/b
+</code></pre>
+					<img src="demos/multivoice.png"/>
+					<audio controls><source src="demos/multivoice.ogg" type="audio/ogg" /></audio><br/>
+				</section>
+				<section>
+					<h2>Alda language features</h2>
+					<p>BUT chords can have notes of unequal length!</p>
+<pre><code class="hljs" contenteditable>
+piano:
+o4 c1/e/g/>c4 &lt; b a g | &lt; g+1/b/>e
+</code></pre>
+					<img src="demos/multivoice2.png"/>
+					<audio controls><source src="demos/multivoice.ogg" type="audio/ogg" /></audio><br/>
+
+				</section>
+				<section>
+					<h2>Alda language features</h2>
+					<p>You can place markers in the score, and then align voices to them - rather than adding multiple rests from the start</p>
+<pre><code class="hljs" contenteditable>
+piano:
+V1: o5 c4 < b a g | %lastnote e1
+V2: o4 c1/e/g | &lt; g+/b
+
+trumpet: 
+o4 @lastnote c4 c &lt; g2
+</code></pre>
+					<img src="demos/mark-end.png"/>
+					<audio controls><source src="demos/mark-end.ogg" type="audio/ogg" /></audio><br/>
+				</section>
+				<section>
+					<h2>Alda language features</h2>
+					<p>You can specify quantization and volume attributes directly to achieve results the parser doesn't have direct notation for</p>
+<pre><code class="hljs" contenteditable>
+bassoon:
+o2 d8 e f+ g a2
+
+o2 d8 e (quant 30) f+ g (quant 99) a2
+
+o2 (vol 40) d8 e (quant 30) (vol 80) f+ g (quant 99) (vol 99) a2
+</code></pre>
+					<img src="demos/staccato.png"/>
+					<audio controls><source src="demos/staccato.ogg" type="audio/ogg" /></audio><br/>
+				</section>
+
+				<section>
+					<h2>Alda language features</h2>
+					<p>Percussion is available, but I'm confused as to whether they're actually multiple instruments, or notes-per-instrument</p>
+					<p>However, it's currently "being worked on"</p>
+				</section>
+				</section>
+
+				<section>
+				<section>
+					<h2>Breaking away from notation</h2>
+					<p>Alda's notation can do things that traditional notation can't easily handle ...<p>
+					<p>Every attribute can be set per-instrument ...</p>
+				</section>
+
+				<section>
+					<h2>Breaking away</h2>
+					<p>Tempo can vary from the default 120bpm</p>
+<pre><code class="hljs" contenteditable>
+trumpet:  o4 c8 d e f g   a b > c4.
+trombone: o3 e8 f g a b > c d   e4.
+</code></pre>
+					<audio controls><source src="demos/tempo1.ogg" type="audio/ogg" /></audio><br/>
+<pre><code class="hljs" contenteditable>
+trumpet:  (tempo 200) o4 c8 d e f g   a b > c4.
+trombone:             o3 e8 f g a b > c d   e4.
+</code></pre>
+					<audio controls><source src="demos/tempo2.ogg" type="audio/ogg" /></audio><br/>
+				</section>
+
+				<section>
+					<h2>Breaking away</h2>
+					<p>Key signatures can vary (OK, that's not so special)</p>
+<pre><code class="hljs" contenteditable>
+trumpet: o4 c8 d e f g a b > c4.
+tuba:    o4 c8 d e f g a b > c4.
+</code></pre>
+					<audio controls><source src="demos/keysig1.ogg" type="audio/ogg" /></audio><br/>
+<pre><code class="hljs" contenteditable>
+trumpet: o4 c8 d e f g a b > c4.
+tuba:    (key-signature [:e :flat :major]) o4 c8 d e f g a b > c4.
+</code></pre>
+					<audio controls><source src="demos/keysig2.ogg" type="audio/ogg" /></audio><br/>
+				</section>
+
+				<section>
+					<h2>Breaking away</h2>
+					<p>Note lengths can also be in seconds</p>
+<pre><code class="hljs" contenteditable>
+piano: c1s e400ms b200ms a100ms g700ms
+</code></pre>
+					<audio controls><source src="demos/seconds.ogg" type="audio/ogg" /></audio><br/>
+				</section>
+
+				<section>
+					<h2>Breaking away</h2>
+					<p>Multiple notes can be "crammed" into a measured time</p>
+<pre><code class="hljs" contenteditable>
+piano:
+c d e f | g r {c d e f}2
+{c d e}2 {c2 d4 e}4 {c1 d4 e}4
+</code></pre>
+					<audio controls><source src="demos/cram.ogg" type="audio/ogg" /></audio><br/>
+				</section>
+
+				<section>
+					<h2>Breaking away</h2>
+					<p>Groups of notes can be repeated</p>
+<pre><code class="hljs" contenteditable>
+piano:
+c4 *4
+c/e *4
+[c16 d e f g] *4
+</code></pre>
+					<audio controls><source src="demos/repeats.ogg" type="audio/ogg" /></audio><br/>
+				</section>
+
+				</section>
+
+
+				<section>
+				<section>
+					<h2>Back on your computer</h2>
+					<p>Alda is written in Clojure, and runs in a JVM (I'm using OpenJDK 7)</p>
+					<p>The default MIDI soundfont is ugly - Alda redistributes FluidR3. Here's <code>midi-electric-bass-finger</code></p>
+					<p>Default: <audio controls><source src="demos/smoke2-default-soundfont.ogg" type="audio/ogg" /></audio><br/>
+					FluidR3: <audio controls><source src="demos/smoke2.ogg" type="audio/ogg" /></audio></p>
+				</section>
+
+				<section>
+					<h2>Read-Evaluate Parse Loop</h2>
+					<p>Interactive Alda - REPL</p>
+<pre><code class="hljs" contenteditable>
+$ alda repl
+Jan 27, 2016 3:53:58 PM com.jsyn.engine.SynthesisEngine start
+INFO: Pure Java JSyn from www.softsynth.com, rate = 44100, RT, V16.7.3 (build 457, 2014-12-25)
+
+ █████╗ ██╗     ██████╗  █████╗ 
+██╔══██╗██║     ██╔══██╗██╔══██╗
+███████║██║     ██║  ██║███████║
+██╔══██║██║     ██║  ██║██╔══██║
+██║  ██║███████╗██████╔╝██║  ██║
+╚═╝  ╚═╝╚══════╝╚═════╝ ╚═╝  ╚═╝
+
+            v1.0.0-rc3
+         repl session
+
+Type :help for a list of available commands. 
+
+Loading MIDI synth... done.
+
+> 
+</code></pre>
+				</section>
+
+				<section>
+					<h2>REPL map</h2>
+					<p>In the REPL, you can see the JSON "map" of your score</p>
+<pre><code class="hljs" contenteditable>
+> :map
+{:events #{}, :markers {:start 0}, :instruments {}}
+
+> piano:
+
+p> :map
+{:events #{},
+ :markers {:start 0},
+ :instruments
+ {"piano-a9leo"
+  {:octave 4,
+   :current-offset {:offset 0},
+   :key-signature {},
+   :config {:type :midi, :patch 1},
+   :duration 1,
+   :volume 1.0,
+   :last-offset {:offset 0},
+   :id "piano-a9leo",
+   :quantization 0.9,
+   :tempo 120,
+   :panning 0.5,
+   :current-marker :start,
+   :stock "midi-acoustic-grand-piano",
+   :track-volume 0.7874015748031497}}}
+
+p> c d e f
+
+p> :map
+{:events
+ #{{:offset 1000.0,
+    :instrument "piano-a9leo",
+    :volume 1.0,
+    :track-volume 0.7874015748031497,
+    :panning 0.5,
+    :midi-note 64,
+    :pitch 329.6275569128699,
+    :duration 450.0}
+   {:offset 1500.0,
+    :instrument "piano-a9leo",
+    :volume 1.0,
+    :track-volume 0.7874015748031497,
+    :panning 0.5,
+    :midi-note 65,
+    :pitch 349.2282314330039,
+    :duration 450.0}
+   {:offset 500.0,
+    :instrument "piano-a9leo",
+    :volume 1.0,
+    :track-volume 0.7874015748031497,
+    :panning 0.5,
+    :midi-note 62,
+    :pitch 293.6647679174076,
+    :duration 450.0}
+   {:offset 0,
+    :instrument "piano-a9leo",
+    :volume 1.0,
+    :track-volume 0.7874015748031497,
+    :panning 0.5,
+    :midi-note 60,
+    :pitch 261.6255653005986,
+    :duration 450.0}},
+ :markers {:start 0},
+ :instruments
+ {"piano-a9leo"
+  {:octave 4,
+   :current-offset {:offset 2000.0},
+   :key-signature {},
+   :config {:type :midi, :patch 1},
+   :duration 1,
+   :volume 1.0,
+   :last-offset {:offset 1500.0},
+   :id "piano-a9leo",
+   :quantization 0.9,
+   :tempo 120,
+   :panning 0.5,
+   :current-marker :start,
+   :stock "midi-acoustic-grand-piano",
+   :track-volume 0.7874015748031497}}}
+
+p> 
+</code></pre>
+
+				</section>
+
+				<section>
+					<h2>Client / Server</h2>
+					<p>From the command-line, alda starts a backend server to do playback. The server takes a long time to start, because "Clojure" and "JVM". Playback is now asynchronous to the command-line.</p>
+<pre><code class="hljs" contenteditable>
+$ time alda start
+[27713] Starting Alda server...
+[27713] Server up ✓
+
+real	0m8.378s
+user	0m0.580s
+sys	0m0.048s
+$ time alda play -f smoke2.alda 
+[27713] Playing file...
+
+real	0m0.877s
+user	0m0.550s
+sys	0m0.024s
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Not Random now</h2>
+					<p>You can write Clojure code inline ...</p>
+<pre><code class="hljs" contenteditable>
+(def REST-RATE 0.15)
+(def MS-LOWER 30)
+(def MS-UPPER 3000)
+(def MAX-OCTAVE 8)
+
+(defn random-note
+  "Plays a random note in a random octave, for a random number of
+  milliseconds.
+
+  May randomly decide to rest, instead, for a random number of milliseconds."
+  []
+  (let [ms (ms (rand-nth (range MS-LOWER MS-UPPER)))]
+    (if (&lt; (rand) REST-RATE)
+      (pause (duration ms))
+      (let [o (rand-int (inc MAX-OCTAVE))
+            n [(keyword (str (rand-nth "abcdefg")))
+               (rand-nth [:sharp :flat :natural])]]
+       (octave o)
+       (note (apply pitch n) (duration ms))))))
+
+midi-electric-piano-1:
+  (panning 25)
+  (random-note) * 10
+
+midi-timpani:
+  (panning 50)
+  (random-note) * 10
+
+midi-celesta:
+  (panning 75)
+  (random-note) * 10
+</code></pre>
+					<audio controls><source src="demos/notrandomnow.ogg" type="audio/ogg" /></audio><br/>
+				</section>
+
+				<section>
+					<h2>Not random now</h2>
+					<img src="demos/notrandomnow.png"/>
+				</section>
+
+
+				</section>
+
+				<section>
+					<h2>Things you can't do yet</h2>
+					<p>Development is active, and new features are being added</p>
+					<p>Watch https://github.com/alda-lang/alda/ for details</p>
+					<ul>
+						<li>Variables</li>
+						<li>Modules/multiple files</li>
+						<li>Transposition</li>
+						<li>Waveform synthesis</li>
+					</ul>
+				</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>Motörhead - Ace of Spades</h2>
+<pre><code class="hljs" contenteditable>
+# Motörhead - Ace of Spades
+# Based on https://musescore.com/user/184237/scores/637181#
+(tempo! 150)
+(key-signature! [:f :sharp :major])
+
+midi-electric-bass-finger:
+# Top line of score, named "Electric Bass"
+%intro
+# 8 bars for the intro
+[o2 d8 d16 d8 d16 *3 | d8 *3 c]*3
+o2 d8 d16 d8 d16 *3 | d32 e- e+ f-  g- a- a+ b  b- a- g+ g-  f+ f- e- d
+[o2 d8 d16 d8 d16 *3 | d8 *3 c]*4
+# At the end of 8 bars we're out of the intro, into verse1
+%verse1
+[ o2 f8/>c1 f16 f8 f16 *3  f8 *4 ]*3
+o2 [f8./a8.]*4 f8/a8
+
+midi-acoustic-bass:
+# Bottom line of score, named "Electric Guitar"
+@intro
+[ r1 ]*4
+[ o4 d8/c8 d16/c16 d8/c8 d8./c8. a8./e-8. a-8./e8. g8/d8 ]*4
+@verse1
+[ f1/c1 ]*3 | f8./c f8./c f8./c~f8./c~f8./c r16
+
+midi-brass-section:
+# "Voice". Sorry Lemmy.
+@verse1
+#  If you like to  gamble  I  | tell you I'm your man ,  you      |
+o5 f8 f   f    f   f8. f8. d8 | f8   d16 f8. d8   f4  r8 d8       |
+#  win some lose some it's    | all the same to  me.              |
+o5 f4  f    f    f8 ~ d8      | f8. d8. f8.  d8. f8 g-32~g+32 r16 |
+
+# Percussion instruments.
+midi-synth-drum:
+# This is the upper set of percussives, including x's
+@intro
+[ r1 ]*2
+[ c16 *16 ]*2
+[ e8/a c/g e c/g  e c/g e c/g ]*3
+  e8/a c/g e c/g c/e/a g16 c/a  e c c c/g
+@verse1
+[ e8/a c/g e c/g  e c/g e c/g ]*3
+  e8/a c/g e c/g c/e/a g16 c/a  e c c c/g
+
+midi-woodblock:
+# This is the lower line percussive
+@intro
+[ r1 ]*4
+[f4 *4 ]*4
+@verse1
+[f4 *4 ]*4
+</code></pre>
+					<audio controls><source src="demos/aceofspades.ogg" type="audio/ogg" /></audio><br/>
+					</section>
+
+					<section>
+						<h2><a href="https://www.youtube.com/watch?v=3RBSkq-_St8">Compressorhead</a></h2>
+					</section>
+
+				</section>
+
+				<section>
+					<h2>Resources</h2>
+					<ul>
+						<li>https://github.com/alda-lang/alda</li>
+						<li>http://daveyarwood.github.io/alda/2015/09/05/alda-a-manifesto-and-gentle-introduction/</li>
+						<li>http://daveyarwood.github.io/alda/2015/11/28/alda-has-a-bunch-of-new-features/</li>
+						<li>https://clojurians.slack.com/messages/alda/</li>
+						<li>February 11 2016, Clojure Remote. http://clojureremote.com/speakers/#yarwood</li>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

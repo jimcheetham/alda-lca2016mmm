@@ -1,0 +1,9 @@
+\relative c'' {
+\clef treble
+
+<g d>8 r <bes f> r <c g>4. <g d>8
+r <bes f> r <des aes> <c g>2
+<g d>8 r <bes f> r <c g>4. <bes f>8
+r <g d>2..
+
+}

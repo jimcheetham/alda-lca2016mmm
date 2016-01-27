@@ -1,0 +1,6 @@
+\relative c'' {
+\new Staff <<
+\new Voice = "first" { \voiceOne c4 b a g  e1 }
+\new Voice = "second" { \voiceTwo <g e c>1 <b, g> }
+>>
+}

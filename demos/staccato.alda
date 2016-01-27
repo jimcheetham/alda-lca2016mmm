@@ -1,0 +1,6 @@
+bassoon:
+o2 d8 e f+ g a2
+
+o2 d8 e (quant 30) f+ g (quant 99) a2
+
+o2 (vol 40) d8 e (quant 30) (vol 80) f+ g (quant 99) (vol 99) a2
