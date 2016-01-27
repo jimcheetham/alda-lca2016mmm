@@ -78,10 +78,10 @@
 					<h2>Alda code</h2>
 					<p>It looks similar to Lilypond</p>
 <pre><code class="hljs" contenteditable>midi-electric-bass-finger:
-(tempo 150)
-o3
-g8/d r b-/f r >c4./&lt;g g8/d  | r b-/f r >d-/&lt;a- >c2/&lt;g |
-g8/d r b-/f r >c4./&lt;g b-8/f | r g2../d
+  (tempo 150)
+  o3
+  g8/d r b-/f r >c4./&lt;g g8/d  | r b-/f r >d-/&lt;a- >c2/&lt;g |
+  g8/d r b-/f r >c4./&lt;g b-8/f | r g2../d
 </code></pre>
 					<p><img src="demos/smoke2.png"/><br/>
 					<audio controls><source src="demos/smoke2.ogg" type="audio/ogg" /></audio><br/>
@@ -91,12 +91,12 @@ g8/d r b-/f r >c4./&lt;g b-8/f | r g2../d
 					<h2>Alda code</h2>
 					<p>Lilypond markup:</p>
 <pre><code class="hljs" contenteditable>\relative c'' {
-\clef treble
-
-&lt;g d>8 r &lt;bes f> r &lt;c g>4. &lt;g d>8
-r &lt;bes f> r &lt;des aes> &lt;c g>2
-&lt;g d>8 r &lt;bes f> r &lt;c g>4. &lt;bes f>8
-r &lt;g d>2..
+  \clef treble
+  
+  &lt;g d>8 r &lt;bes f> r &lt;c g>4. &lt;g d>8
+  r &lt;bes f> r &lt;des aes> &lt;c g>2
+  &lt;g d>8 r &lt;bes f> r &lt;c g>4. &lt;bes f>8
+  r &lt;g d>2..
 }</code></pre>
 					<p><img src="demos/smoke2.png"/><br/>
 					<audio controls><source src="demos/smoke2.ogg" type="audio/ogg" /></audio><br/>
@@ -131,10 +131,9 @@ r &lt;g d>2..
 				<section>
 					<h2>Alda language features</h2>
 					<p>Multiple voices are synchronised</p>
-<pre><code class="hljs" contenteditable>
-piano:
-V1: o5 c4 &lt; b a g | e1
-V2: o4 c1/e/g | &lt; g+/b
+<pre><code class="hljs" contenteditable>piano:
+  V1: o5 c4 &lt; b a g | e1
+  V2: o4 c1/e/g | &lt; g+/b
 </code></pre>
 					<img src="demos/multivoice.png"/>
 					<audio controls><source src="demos/multivoice.ogg" type="audio/ogg" /></audio><br/>
@@ -142,9 +141,8 @@ V2: o4 c1/e/g | &lt; g+/b
 				<section>
 					<h2>Alda language features</h2>
 					<p>BUT chords can have notes of unequal length!</p>
-<pre><code class="hljs" contenteditable>
-piano:
-o4 c1/e/g/>c4 &lt; b a g | &lt; g+1/b/>e
+<pre><code class="hljs" contenteditable>piano:
+  o4 c1/e/g/>c4 &lt; b a g | &lt; g+1/b/>e
 </code></pre>
 					<img src="demos/multivoice2.png"/>
 					<audio controls><source src="demos/multivoice.ogg" type="audio/ogg" /></audio><br/>
@@ -153,13 +151,12 @@ o4 c1/e/g/>c4 &lt; b a g | &lt; g+1/b/>e
 				<section>
 					<h2>Alda language features</h2>
 					<p>You can place markers in the score, and then align voices to them - rather than adding multiple rests from the start</p>
-<pre><code class="hljs" contenteditable>
-piano:
-V1: o5 c4 < b a g | %lastnote e1
-V2: o4 c1/e/g | &lt; g+/b
+<pre><code class="hljs" contenteditable>piano:
+  V1: o5 c4 < b a g | %lastnote e1
+  V2: o4 c1/e/g | &lt; g+/b
 
 trumpet: 
-o4 @lastnote c4 c &lt; g2
+  o4 @lastnote c4 c &lt; g2
 </code></pre>
 					<img src="demos/mark-end.png"/>
 					<audio controls><source src="demos/mark-end.ogg" type="audio/ogg" /></audio><br/>
@@ -167,13 +164,12 @@ o4 @lastnote c4 c &lt; g2
 				<section>
 					<h2>Alda language features</h2>
 					<p>You can specify quantization and volume attributes directly to achieve results the parser doesn't have direct notation for</p>
-<pre><code class="hljs" contenteditable>
-bassoon:
-o2 d8 e f+ g a2
-
-o2 d8 e (quant 30) f+ g (quant 99) a2
-
-o2 (vol 40) d8 e (quant 30) (vol 80) f+ g (quant 99) (vol 99) a2
+<pre><code class="hljs" contenteditable>bassoon:
+  o2 d8 e f+ g a2
+  
+  o2 d8 e (quant 30) f+ g (quant 99) a2
+  
+  o2 (vol 40) d8 e (quant 30) (vol 80) f+ g (quant 99) (vol 99) a2
 </code></pre>
 					<img src="demos/staccato.png"/>
 					<audio controls><source src="demos/staccato.ogg" type="audio/ogg" /></audio><br/>
@@ -196,13 +192,11 @@ o2 (vol 40) d8 e (quant 30) (vol 80) f+ g (quant 99) (vol 99) a2
 				<section>
 					<h2>Breaking away</h2>
 					<p>Tempo can vary from the default 120bpm</p>
-<pre><code class="hljs" contenteditable>
-trumpet:  o4 c8 d e f g   a b > c4.
+<pre><code class="hljs" contenteditable>trumpet:  o4 c8 d e f g   a b > c4.
 trombone: o3 e8 f g a b > c d   e4.
 </code></pre>
 					<audio controls><source src="demos/tempo1.ogg" type="audio/ogg" /></audio><br/>
-<pre><code class="hljs" contenteditable>
-trumpet:  (tempo 200) o4 c8 d e f g   a b > c4.
+<pre><code class="hljs" contenteditable>trumpet:  (tempo 200) o4 c8 d e f g   a b > c4.
 trombone:             o3 e8 f g a b > c d   e4.
 </code></pre>
 					<audio controls><source src="demos/tempo2.ogg" type="audio/ogg" /></audio><br/>
@@ -211,14 +205,19 @@ trombone:             o3 e8 f g a b > c d   e4.
 				<section>
 					<h2>Breaking away</h2>
 					<p>Key signatures can vary (OK, that's not so special)</p>
-<pre><code class="hljs" contenteditable>
-trumpet: o4 c8 d e f g a b > c4.
-tuba:    o4 c8 d e f g a b > c4.
+<pre><code class="hljs" contenteditable>trumpet:
+  o4 c8 d e f g a b > c4.
+
+tuba:
+  o4 c8 d e f g a b > c4.
 </code></pre>
 					<audio controls><source src="demos/keysig1.ogg" type="audio/ogg" /></audio><br/>
-<pre><code class="hljs" contenteditable>
-trumpet: o4 c8 d e f g a b > c4.
-tuba:    (key-signature [:e :flat :major]) o4 c8 d e f g a b > c4.
+<pre><code class="hljs" contenteditable>trumpet:
+  o4 c8 d e f g a b > c4.
+
+tuba:
+  (key-signature [:e :flat :major])
+  o4 c8 d e f g a b > c4.
 </code></pre>
 					<audio controls><source src="demos/keysig2.ogg" type="audio/ogg" /></audio><br/>
 				</section>
@@ -226,8 +225,7 @@ tuba:    (key-signature [:e :flat :major]) o4 c8 d e f g a b > c4.
 				<section>
 					<h2>Breaking away</h2>
 					<p>Note lengths can also be in seconds</p>
-<pre><code class="hljs" contenteditable>
-piano: c1s e400ms b200ms a100ms g700ms
+<pre><code class="hljs" contenteditable>piano: c1s e400ms b200ms a100ms g700ms
 </code></pre>
 					<audio controls><source src="demos/seconds.ogg" type="audio/ogg" /></audio><br/>
 				</section>
@@ -235,10 +233,9 @@ piano: c1s e400ms b200ms a100ms g700ms
 				<section>
 					<h2>Breaking away</h2>
 					<p>Multiple notes can be "crammed" into a measured time</p>
-<pre><code class="hljs" contenteditable>
-piano:
-c d e f | g r {c d e f}2
-{c d e}2 {c2 d4 e}4 {c1 d4 e}4
+<pre><code class="hljs" contenteditable>piano:
+  c d e f | g r {c d e f}2
+  {c d e}2 {c2 d4 e}4 {c1 d4 e}4
 </code></pre>
 					<audio controls><source src="demos/cram.ogg" type="audio/ogg" /></audio><br/>
 				</section>
@@ -246,11 +243,10 @@ c d e f | g r {c d e f}2
 				<section>
 					<h2>Breaking away</h2>
 					<p>Groups of notes can be repeated</p>
-<pre><code class="hljs" contenteditable>
-piano:
-c4 *4
-c/e *4
-[c16 d e f g] *4
+<pre><code class="hljs" contenteditable>piano:
+  c4 *4
+  c/e *4
+  [c16 d e f g] *4
 </code></pre>
 					<audio controls><source src="demos/repeats.ogg" type="audio/ogg" /></audio><br/>
 				</section>
@@ -472,52 +468,56 @@ midi-celesta:
 (key-signature! [:f :sharp :major])
 
 midi-electric-bass-finger:
-# Top line of score, named "Electric Bass"
-%intro
-# 8 bars for the intro
-[o2 d8 d16 d8 d16 *3 | d8 *3 c]*3
-o2 d8 d16 d8 d16 *3 | d32 e- e+ f-  g- a- a+ b  b- a- g+ g-  f+ f- e- d
-[o2 d8 d16 d8 d16 *3 | d8 *3 c]*4
-# At the end of 8 bars we're out of the intro, into verse1
-%verse1
-[ o2 f8/>c1 f16 f8 f16 *3  f8 *4 ]*3
-o2 [f8./a8.]*4 f8/a8
+  # Top line of score, named "Electric Bass"
+  %intro
+  # 8 bars for the intro
+  [o2 d8 d16 d8 d16 *3 | d8 *3 c]*3
+  o2 d8 d16 d8 d16 *3 | d32 e- e+ f-  g- a- a+ b  b- a- g+ g-  f+ f- e- d
+  [o2 d8 d16 d8 d16 *3 | d8 *3 c]*4
+
+  # At the end of 8 bars we're out of the intro, into verse1
+  %verse1
+  [ o2 f8/>c1 f16 f8 f16 *3  f8 *4 ]*3
+  o2 [f8./a8.]*4 f8/a8
 
 midi-acoustic-bass:
-# Bottom line of score, named "Electric Guitar"
-@intro
-[ r1 ]*4
-[ o4 d8/c8 d16/c16 d8/c8 d8./c8. a8./e-8. a-8./e8. g8/d8 ]*4
-@verse1
-[ f1/c1 ]*3 | f8./c f8./c f8./c~f8./c~f8./c r16
+  # Bottom line of score, named "Electric Guitar"
+  @intro
+  [ r1 ]*4
+  [ o4 d8/c8 d16/c16 d8/c8 d8./c8. a8./e-8. a-8./e8. g8/d8 ]*4
+
+  @verse1
+  [ f1/c1 ]*3 | f8./c f8./c f8./c~f8./c~f8./c r16
 
 midi-brass-section:
-# "Voice". Sorry Lemmy.
-@verse1
-#  If you like to  gamble  I  | tell you I'm your man ,  you      |
-o5 f8 f   f    f   f8. f8. d8 | f8   d16 f8. d8   f4  r8 d8       |
-#  win some lose some it's    | all the same to  me.              |
-o5 f4  f    f    f8 ~ d8      | f8. d8. f8.  d8. f8 g-32~g+32 r16 |
+  # "Voice". Sorry Lemmy.
+  @verse1
+  #  If you like to  gamble  I  | tell you I'm your man ,  you      |
+  o5 f8 f   f    f   f8. f8. d8 | f8   d16 f8. d8   f4  r8 d8       |
+  #  win some lose some it's    | all the same to  me.              |
+  o5 f4  f    f    f8 ~ d8      | f8. d8. f8.  d8. f8 g-32~g+32 r16 |
 
 # Percussion instruments.
 midi-synth-drum:
-# This is the upper set of percussives, including x's
-@intro
-[ r1 ]*2
-[ c16 *16 ]*2
-[ e8/a c/g e c/g  e c/g e c/g ]*3
-  e8/a c/g e c/g c/e/a g16 c/a  e c c c/g
-@verse1
-[ e8/a c/g e c/g  e c/g e c/g ]*3
-  e8/a c/g e c/g c/e/a g16 c/a  e c c c/g
+  # This is the upper set of percussives, including x's
+  @intro
+  [ r1 ]*2
+  [ c16 *16 ]*2
+  [ e8/a c/g e c/g  e c/g e c/g ]*3
+    e8/a c/g e c/g c/e/a g16 c/a  e c c c/g
+
+  @verse1
+  [ e8/a c/g e c/g  e c/g e c/g ]*3
+    e8/a c/g e c/g c/e/a g16 c/a  e c c c/g
 
 midi-woodblock:
-# This is the lower line percussive
-@intro
-[ r1 ]*4
-[f4 *4 ]*4
-@verse1
-[f4 *4 ]*4
+  # This is the lower line percussive
+  @intro
+  [ r1 ]*4
+  [f4 *4 ]*4
+
+  @verse1
+  [f4 *4 ]*4
 </code></pre>
 					<audio controls><source src="demos/aceofspades.ogg" type="audio/ogg" /></audio><br/>
 					</section>
