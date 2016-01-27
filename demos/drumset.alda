@@ -1,0 +1,7 @@
+(tempo! 150)
+
+midi-percussion:
+  V1: # bass and snare
+    o2 c4 e8 c r c e c
+  V2: # cymbals (hi-hat, crash, ride bell, another crash)
+    o2 f+8 f+ r o3 c+8~8 f16 f r8 a

@@ -187,8 +187,17 @@ trumpet:
 
 				<section>
 					<h2>Alda language features</h2>
-					<p>Percussion is available, but I'm confused as to whether they're actually multiple instruments, or notes-per-instrument</p>
-					<p>However, it's currently "being worked on"</p>
+					<p>Percussion is available, as notes-per-instrument</p>
+					<p>See <a href="https://github.com/alda-lang/alda/blob/master/examples/percussion.alda">https://github.com/alda-lang/alda/blob/master/examples/percussion.alda</a></p>
+<pre><code class="hljs" contenteditable>(tempo! 150)
+
+midi-percussion:
+  V1: # bass and snare
+    o2 c4 e8 c r c e c
+  V2: # cymbals (hi-hat, crash, ride bell, another crash)
+    o2 f+8 f+ r o3 c+8~8 f16 f r8 a
+</code></pre>
+					<audio controls><source src="demos/drumset.ogg" type="audio/ogg" /></audio><br/>
 				</section>
 				</section>
 
