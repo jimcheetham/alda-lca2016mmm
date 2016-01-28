@@ -521,27 +521,14 @@ midi-brass-section:
   #  win some lose some it's    | all the same to  me.              |
   o5 f4  f    f    f8 ~ d8      | f8. d8. f8.  d8. f8 g-32~g+32 r16 |
 
-# Percussion instruments.
-midi-synth-drum:
-  # This is the upper set of percussives, including x's
+# drum set
+midi-percussion:
   @intro
-  [ r1 ]*2
-  [ c16 *16 ]*2
-  [ e8/a c/g e c/g  e c/g e c/g ]*3
-    e8/a c/g e c/g  c/e/a g16 c/a e c c c/g
-
-  @verse1
-  [ e8/a c/g e c/g  e c/g e c/g ]*3
-    e8/a c/g e c/g  c/e/a g16 c/a e c c c/g
-
-midi-woodblock:
-  # This is the lower line percussive
-  @intro
-  [ r1 ]*4
-  [f4 *4 ]*4
-
-  @verse1
-  [f4 *4 ]*4
+  r1 *2
+  o2 [(vol 100) e=16 (vol 75) e=16 *3] *6 (vol 100) e=16 *8
+  V1: [a+8 *8]*7
+  V2: [c=8 e= c=16 c= e=8 c= e=16 c=16~16 c=16 e=8]*7
+  V0: [e=16 c=8/>c+ <]*3 c=16 e= *6
 </code></pre>
 					<audio controls><source src="demos/aceofspades.ogg" type="audio/ogg" /></audio><br/>
 					</section>
