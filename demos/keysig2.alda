@@ -1,7 +1,6 @@
 trumpet:
-  (vol 50)
   o4 c8 d e f g a b > c4.
 
 tuba:
   (key-signature [:e :flat :major])
-  o4 c8 d e f g a b > c4.
+  o3 c8 d e f g a b > c4.
